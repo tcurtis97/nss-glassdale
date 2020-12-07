@@ -6,6 +6,24 @@ import { useConvictions, getConvictions } from "./ConvictionProvider.js"
 
 // Get a reference to the DOM element where the <select> will be rendered
 const contentTarget = document.querySelector(".filters__crime")
+const eventHub = document.querySelector(".container")
+
+eventHub.addEventListener("change", event => {
+    if (event.target.id === "crimeSelect") {
+        const customEvent = new CustomEvent("crimeChosen", {
+            detail: {
+                crimeThatWasChosen: event.target.value
+            }
+        })
+        eventHub.dispatchEvent(customEvent)
+    }
+})
+
+
+
+
+
+
 
 export const ConvictionSelect = () => {
     // Trigger fetching the API data and loading it into application state
@@ -23,17 +41,16 @@ const render = convictionsCollection => {
         the convictionsCollection to generate the option elements.
         Look back at the example provided above.
     */
-    contentTarget.innerHTML = `
-        <select class="dropdown" id="crimeSelect">
-            <option value="0">Please select a crime...</option>
-            ${
-                convictionsCollection.map(
-                    convictionObject => {
-                        const crime = convictionObject.name
-                        return `<option>${crime}</option>`
-                    }
-                )
-            }
-        </select>
-    `
+   contentTarget.innerHTML = `
+   <select class="dropdown" id="crimeSelect">
+       <option value="0">Please select a crime...</option>
+       ${
+           convictionsCollection.map((crime) => `
+             <option value=${crime.id}>
+               ${crime.name}
+             </option>
+           `)
+       }
+   </select>
+`
 }
