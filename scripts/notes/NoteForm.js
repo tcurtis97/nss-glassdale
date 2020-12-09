@@ -5,13 +5,18 @@ const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
 
 
-// Handle browser-generated click event in component
+
+
+
+
+// listens for a click of the save button and takes the values inputed and calls saveNote() to store in the api
+
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
 
         // need to gather the data from the form
        const author = document.querySelector("#author").value
-        const test = document.querySelector("#text").value
+        const text = document.querySelector("#text").value
         const suspect = document.querySelector("#suspect").value
 
         // Make a new object representation of a note
@@ -34,22 +39,13 @@ eventHub.addEventListener("click", clickEvent => {
 
 
 
-// add event listener for a click on the form Btn
-
-// need to gather the data from the form
-
-// convert form data to an object
-
-// create a custom event to broadcast the form data to which ever module is listening
-
-// send the data to be stored in the db,via the api
 
 
 
 
 
 
-
+// puts the buttons into the dom
 
 const render = () => {
     contentTarget.innerHTML = `
@@ -61,6 +57,13 @@ const render = () => {
         <button id="saveNote">Save Note</button>
     `
 }
+
+
+
+
+
+
+// put this into main.js to call render to render the buttons into the dom 
 
 export const NoteForm = () => {
     render()
