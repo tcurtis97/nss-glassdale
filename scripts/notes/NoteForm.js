@@ -62,9 +62,6 @@ const render = () => {
 
 
 
-
-// put this into main.js to call render to render the buttons into the dom 
-
 export const NoteForm = () => {
     render()
 }

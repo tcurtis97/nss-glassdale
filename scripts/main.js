@@ -4,6 +4,9 @@ import {OfficerSelect} from "./officers/OfficerSelect.js"
 import {NoteForm} from "./notes/NoteForm.js"
 import {ShowNoteButton} from "./notes/ShowNotesButton.js"
 import "./notes/NoteList.js"
+// import { NoteHTMLConverter } from "./notes/Note.js"
+import "./alibis/associateList.js"
+
 
 NoteForm()
 CriminalList()
@@ -21,3 +24,6 @@ ShowNoteButton()
 // which modules are involved:
 // criminalList
 // ConvictionSelect
+
+
+
