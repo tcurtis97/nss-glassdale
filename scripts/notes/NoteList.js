@@ -1,5 +1,6 @@
-import { getNotes, useNotes } from "./NoteProvider.js";
+import { getNotes, useNotes, deleteNote } from "./NoteProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
+import { useCriminals } from "../criminals/criminalDataProvider.js"
 
 // Query the DOM for the element that your notes will be added to 
 const contentTarget = document.querySelector(".noteList")
@@ -15,30 +16,57 @@ eventHub.addEventListener("noteStateChanged", () => {
 })
 
 
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("deleteNote--")) {
+        const [prefix, id] = clickEvent.target.id.split("--")
+        // const noteId = clickEvent.target.id.split("--")[1]
+        /*
+            Invoke the function that performs the delete operation.
+
+            Once the operation is complete you should THEN invoke
+            useNotes() and render the note list again.
+        */
+       deleteNote(noteId)
+    }
+    }
+    )
 
 
-
-
-const render = (noteArray) => {
+const render = (noteArray, criminals) => {
     const allNotesConvertedToStrings = noteArray.map(
         // convert the notes objects to HTML with NoteHTMLConverter
         (note) => {
-         return   NoteHTMLConverter(note)  
-        }
-    ).join("")
+            const associatedCriminal = criminals.find(
+                (criminal) => {
+            return criminal.id === note.criminalId
+
+        })
+        note.criminalName = associatedCriminal.name
+
+
+        return   NoteHTMLConverter(note)
+
+}).join("")
 
     contentTarget.innerHTML = allNotesConvertedToStrings
 }
 
 
 
-
+author: "John Jonson"
+criminalId: 1
+criminalName: "Madelyn Lebsack"
+id: 1
+text: "This is a note"
+timestamp: 1609777575867
+__proto__: Object
 
 
 export const NoteList = () => {
+    let criminals = useCriminals()
     getNotes()
         .then(() => {
             const allNotes = useNotes()
-            render(allNotes)
+            render(allNotes, criminals)
         })
 }

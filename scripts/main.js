@@ -6,8 +6,10 @@ import {ShowNoteButton} from "./notes/ShowNotesButton.js"
 import "./notes/NoteList.js"
 // import { NoteHTMLConverter } from "./notes/Note.js"
 import "./alibis/associateList.js"
+import {ShowWitnessesButton} from "./witnesses/showWitnessesButton.js"
 
 
+ShowWitnessesButton()
 NoteForm()
 CriminalList()
 ConvictionSelect()
