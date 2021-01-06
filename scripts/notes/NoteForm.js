@@ -1,3 +1,4 @@
+import { getCriminals, useCriminals } from "../criminals/criminalDataProvider.js"
 import {saveNote} from "./NoteProvider.js"
 
 
@@ -17,13 +18,13 @@ eventHub.addEventListener("click", clickEvent => {
         // need to gather the data from the form
        const author = document.querySelector("#author").value
         const text = document.querySelector("#text").value
-        const suspect = document.querySelector("#suspect").value
+        const criminalId = parseInt(document.querySelector("#suspect").value)
 
         // Make a new object representation of a note
         const newNote = {
             author:author,
             text: text,
-            suspect: suspect,
+            criminalId: criminalId,
             timestamp: Date.now()
             // Key/value pairs here
         }
@@ -41,18 +42,28 @@ eventHub.addEventListener("click", clickEvent => {
 
 
 
-
-
-
-
 // puts the buttons into the dom
 
 const render = () => {
+    const criminalsCollection = useCriminals()
     contentTarget.innerHTML = `
-        Put some input fields and prompts here
         <input type="text" id="author" placeholder="author name">
+
         <textarea id="text" placeholder = "note text"></textarea>
+
         <input type="text" id="suspect" placeholder="suspect name">
+
+        <select class="dropdown" id="suspect">
+        <option value="0">Please select a suspect...</option>
+        ${
+            criminalsCollection.map(
+              (criminal) => `
+                <option value=${criminal.id}>
+                  ${criminal.name}
+                </option>
+            `)
+        }
+    </select>
 
         <button id="saveNote">Save Note</button>
     `
@@ -63,5 +74,6 @@ const render = () => {
 
 
 export const NoteForm = () => {
-    render()
+    getCriminals()
+   .then( () => render())
 }
