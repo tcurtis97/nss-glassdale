@@ -3,7 +3,7 @@ import { useCriminals, getCriminals} from "../criminals/criminalDataProvider.js"
 import { AlibisHTMLConverter } from "./alibis.js";
 import { CriminalList } from "../criminals/criminalList.js";
 
-CriminalList()
+// CriminalList()
 const associateElement = document.querySelector(".alibisButton")
 const eventHub = document.querySelector(".container") 
 

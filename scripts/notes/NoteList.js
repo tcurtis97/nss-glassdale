@@ -18,7 +18,7 @@ eventHub.addEventListener("noteStateChanged", () => {
 
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("deleteNote--")) {
-        const [prefix, id] = clickEvent.target.id.split("--")
+        const [prefix, noteId] = clickEvent.target.id.split("--")
         // const noteId = clickEvent.target.id.split("--")[1]
         /*
             Invoke the function that performs the delete operation.
@@ -52,14 +52,6 @@ const render = (noteArray, criminals) => {
 }
 
 
-
-author: "John Jonson"
-criminalId: 1
-criminalName: "Madelyn Lebsack"
-id: 1
-text: "This is a note"
-timestamp: 1609777575867
-__proto__: Object
 
 
 export const NoteList = () => {
