@@ -51,7 +51,6 @@ const render = () => {
 
         <textarea id="text" placeholder = "note text"></textarea>
 
-        <input type="text" id="suspect" placeholder="suspect name">
 
         <select class="dropdown" id="suspect">
         <option value="0">Please select a suspect...</option>
