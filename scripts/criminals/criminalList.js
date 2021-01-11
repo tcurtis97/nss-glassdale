@@ -96,40 +96,10 @@ eventHub.addEventListener("officerChosen", event => {
 })
 
 
+eventHub.addEventListener("criminalListGenerate", e => {
+    CriminalList();
+
+});
 
 
-
-
-
-
-
-
-
-
-
-
-// old function before decoupling
-// export const CriminalList = () => {
-//     getCriminals().then( () => {
-//         let perps = useCriminals()
-
-//         for (const perp of perps) {
-//             criminalCards.push(Criminal(perp))
-
-// //         }
-        
-    
-//         criminalElement.innerHTML += criminalCards.join("")
-       
-        
-        
-        
-        
-        
-//         /*
-//             Now that you have the data, what
-//             component should be rendered?
-//         */
-//     })
-// }
 
