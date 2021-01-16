@@ -10,6 +10,9 @@ import { WitnessListButton } from "./witnesses/ShowWitnessStatmentsBtn.js";
 import "./witnesses/witnessList.js"
 import { CriminalListButton } from "./criminals/criminalButton.js";
 import { FacilityBTN } from "./facility/DisplayFacilitiesButton.js"
+import "./facility/facilityList.js"
+
+
 
 FacilityBTN()
 WitnessListButton()
